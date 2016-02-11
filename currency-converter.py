@@ -1,12 +1,12 @@
 import requests
 
-a = raw_input('Enter currency to convert from?')
+a = input('Enter currency to convert from?')
 a = a.upper()
 
-b = raw_input('Enter currency to convert to?')
+b = input('Enter currency to convert to?')
 b = b.upper()
 
-c = float(raw_input('Enter value to convert?'))
+c = float(input('Enter value to convert?'))
 
 url = ('https://currency-api.appspot.com/api/%s/%s.json') % (a, b)
 print(url)
