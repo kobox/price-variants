@@ -7,9 +7,7 @@ from operator import itemgetter, attrgetter, methodcaller
 import csv, io
 from converter import CurrencyConverter
 
-data = [
-('Name', 'Zadruk', 'Laminowanie', 'Mechanizm', 'Wielobig', 'Kó?ko grzbietowe', 'Kieszonki (wklejane)', 'Quantity', 'Product quantity limit', 'Price', 'Additional days')
-]
+data = ('Name', 'Zadruk', 'Laminowanie', 'Mechanizm', 'Wielobig', 'Kó?ko grzbietowe', 'Kieszonki (wklejane)', 'Quantity', 'Product quantity limit', 'Price', 'Additional days')
 exclude = [(), ]
 prices_file = io.open('tutorial.csv', 'w', encoding='utf-8')
 mywriter = csv.writer(prices_file, delimiter=';',)
@@ -73,9 +71,9 @@ for v in range(len(properties)):
     for lista in itertools.product(*properties[v]):
         x2, y2 = zip(*lista)
         z1, z2, z3, z4, z5, z6 = x2
-        line.append((z1, z2, z3, z4, z5, z6, quantity[v], quantity[v+1]-1, converter.convert(round(sum(j for i, j in lista), 2))))
+        line.append(('Reklampärmar', z1, z2, z3, z4, z5, z6, quantity[v], quantity[v+1]-1, converter.convert(round(sum(j for i, j in lista), 2)), 0))
 
-line = sorted(line, key=itemgetter(0, 1, 2, 3, 4, 5, 6))
+line = sorted(line, key=itemgetter(1, 2, 3, 4, 5, 6, 7))
 for i in range(len(line)):
     print(line[i])
     mywriter.writerow(line[i])
