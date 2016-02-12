@@ -7,7 +7,7 @@ from operator import itemgetter, attrgetter, methodcaller
 import csv, io
 from converter import CurrencyConverter
 
-data = ('Name', 'Zadruk', 'Laminowanie', 'Mechanizm', 'Wielobig', 'Kó?ko grzbietowe', 'Kieszonki (wklejane)', 'Quantity', 'Product quantity limit', 'Price', 'Additional days')
+data = ('Name', 'Zadruk', 'Laminowanie', 'Mechanizm', 'Wielobig', 'Kó?ko grzbietowe', 'Kieszonki (wklejane)', 'Nak?ad', 'Product quantity limit', 'Koszt', 'Dodatkowe dni')
 exclude = [(), ]
 prices_file = io.open('tutorial.csv', 'w', encoding='utf-8')
 mywriter = csv.writer(prices_file, delimiter=';',)
