@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: iso-8859-1 -*-
+# -*- coding: utf-8 -*-
 # __author__ = 'ko'
 #from __future__ import unicode_literals
 import itertools
@@ -7,71 +7,71 @@ from operator import itemgetter, attrgetter, methodcaller
 import csv, io
 from converter import CurrencyConverter
 
-data = ('Name', 'Zadruk', 'Laminowanie', 'Mechanizm', 'Wielobig', 'KÛ?ko grzbietowe', 'Kieszonki (wklejane)', 'Nak?ad', 'Product quantity limit', 'Koszt', 'Dodatkowe dni')
+data = ('Name', 'Zadruk', 'Laminowanie', 'Mechanizm', 'Wielobig', 'K√≥≈Çko grzbietowe', 'Kieszonki (wklejane)', 'Nak?ad', 'Product quantity limit', 'Koszt', 'Dodatkowe dni')
 exclude = [(), ]
 prices_file = io.open('tutorial.csv', 'w', encoding='utf-8')
 mywriter = csv.writer(prices_file, delimiter=';',)
 mywriter.writerow(data)
 quantity = (1, 10, 20, 50, 75, 100, 150, 200, 250, 300, 400, 500, 600, 700, 800, 900, 1000, 10000)
 line = []
-properties = [[[('CMYK-tryck 4/0', 199), ('CMYK-tryck 4/4', 201)], [('Gl‰ttad folie', 0), ('Matt folie', 0.20), ('Reps‰ker matt folie', 2), ('Folie med linstruktur', 3)], [('STR16/04/152', -0.15), ('STR23/04/152', -0.10), ('STR30/04/152', 0), ('STR38/04/152', 0.35)], [('Ja', 0.2), ('Nej', 0)],
-              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka fˆr visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
-              [[('CMYK-tryck 4/0', 49), ('CMYK-tryck 4/4', 51)], [('Gl‰ttad folie', 0), ('Matt folie', 0.20), ('Reps‰ker matt folie', 2), ('Folie med linstruktur', 3)],
+properties = [[[('CMYK-tryck 4/0', 199), ('CMYK-tryck 4/4', 201)], [('Gl√§ttad folie', 0), ('Matt folie', 0.20), ('Reps√§ker matt folie', 2), ('Folie med linstruktur', 3)], [('STR16/04/152', -0.15), ('STR23/04/152', -0.10), ('STR30/04/152', 0), ('STR38/04/152', 0.35)], [('Ja', 0.2), ('Nej', 0)],
+              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka f√∂r visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
+              [[('CMYK-tryck 4/0', 49), ('CMYK-tryck 4/4', 51)], [('Gl√§ttad folie', 0), ('Matt folie', 0.20), ('Reps√§ker matt folie', 2), ('Folie med linstruktur', 3)],
               [('STR16/04/152', -0.15), ('STR23/04/152', -0.15), ('STR30/04/152', 0), ('STR38/04/152', 0.35)], [('Ja', 0.2), ('Nej', 0)],
-              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka fˆr visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
-              [[('CMYK-tryck 4/0', 30), ('CMYK-tryck 4/4', 32)], [('Gl‰ttad folie', 0), ('Matt folie', 0.20), ('Reps‰ker matt folie', 2), ('Folie med linstruktur', 3)],
+              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka f√∂r visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
+              [[('CMYK-tryck 4/0', 30), ('CMYK-tryck 4/4', 32)], [('Gl√§ttad folie', 0), ('Matt folie', 0.20), ('Reps√§ker matt folie', 2), ('Folie med linstruktur', 3)],
               [('STR16/04/152', -0.15), ('STR23/04/152', -0.15), ('STR30/04/152', 0), ('STR38/04/152', 0.35)], [('Ja', 0.2), ('Nej', 0)],
-              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka fˆr visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
-              [[('CMYK-tryck 4/0', 20), ('CMYK-tryck 4/4', 22)], [('Gl‰ttad folie', 0), ('Matt folie', 0.20), ('Reps‰ker matt folie', 2), ('Folie med linstruktur', 3)],
+              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka f√∂r visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
+              [[('CMYK-tryck 4/0', 20), ('CMYK-tryck 4/4', 22)], [('Gl√§ttad folie', 0), ('Matt folie', 0.20), ('Reps√§ker matt folie', 2), ('Folie med linstruktur', 3)],
               [('STR16/04/152', -0.15), ('STR23/04/152', -0.15), ('STR30/04/152', 0), ('STR38/04/152', 0.35)], [('Ja', 0.2), ('Nej', 0)],
-              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka fˆr visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
-              [[('CMYK-tryck 4/0', 17), ('CMYK-tryck 4/4', 19)], [('Gl‰ttad folie', 0), ('Matt folie', 0.20), ('Reps‰ker matt folie', 2), ('Folie med linstruktur', 3)],
+              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka f√∂r visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
+              [[('CMYK-tryck 4/0', 17), ('CMYK-tryck 4/4', 19)], [('Gl√§ttad folie', 0), ('Matt folie', 0.20), ('Reps√§ker matt folie', 2), ('Folie med linstruktur', 3)],
               [('STR16/04/152', -0.15), ('STR23/04/152', -0.15), ('STR30/04/152', 0), ('STR38/04/152', 0.35)], [('Ja', 0.2), ('Nej', 0)],
-              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka fˆr visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
-              [[('CMYK-tryck 4/0', 15), ('CMYK-tryck 4/4', 17)], [('Gl‰ttad folie', 0), ('Matt folie', 0.20), ('Reps‰ker matt folie', 2), ('Folie med linstruktur', 3)],
+              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka f√∂r visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
+              [[('CMYK-tryck 4/0', 15), ('CMYK-tryck 4/4', 17)], [('Gl√§ttad folie', 0), ('Matt folie', 0.20), ('Reps√§ker matt folie', 2), ('Folie med linstruktur', 3)],
               [('STR16/04/152', -0.15), ('STR23/04/152', -0.15), ('STR30/04/152', 0), ('STR38/04/152', 0.35)], [('Ja', 0.2), ('Nej', 0)],
-              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka fˆr visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
-              [[('CMYK-tryck 4/0', 14), ('CMYK-tryck 4/4', 15)], [('Gl‰ttad folie', 0), ('Matt folie', 0.20), ('Reps‰ker matt folie', 2), ('Folie med linstruktur', 3)],
+              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka f√∂r visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
+              [[('CMYK-tryck 4/0', 14), ('CMYK-tryck 4/4', 15)], [('Gl√§ttad folie', 0), ('Matt folie', 0.20), ('Reps√§ker matt folie', 2), ('Folie med linstruktur', 3)],
               [('STR16/04/152', -0.15), ('STR23/04/152', -0.15), ('STR30/04/152', 0), ('STR38/04/152', 0.35)], [('Ja', 0.2), ('Nej', 0)],
-              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka fˆr visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
-              [[('CMYK-tryck 4/0', 13.50), ('CMYK-tryck 4/4', 14.50)], [('Gl‰ttad folie', 0), ('Matt folie', 0.20), ('Reps‰ker matt folie', 2), ('Folie med linstruktur', 3)],
+              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka f√∂r visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
+              [[('CMYK-tryck 4/0', 13.50), ('CMYK-tryck 4/4', 14.50)], [('Gl√§ttad folie', 0), ('Matt folie', 0.20), ('Reps√§ker matt folie', 2), ('Folie med linstruktur', 3)],
               [('STR16/04/152', -0.15), ('STR23/04/152', -0.15), ('STR30/04/152', 0), ('STR38/04/152', 0.35)], [('Ja', 0.2), ('Nej', 0)],
-              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka fˆr visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
-              [[('CMYK-tryck 4/0', 13), ('CMYK-tryck 4/4', 14)], [('Gl‰ttad folie', 0), ('Matt folie', 0.20), ('Reps‰ker matt folie', 2), ('Folie med linstruktur', 3)],
+              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka f√∂r visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
+              [[('CMYK-tryck 4/0', 13), ('CMYK-tryck 4/4', 14)], [('Gl√§ttad folie', 0), ('Matt folie', 0.20), ('Reps√§ker matt folie', 2), ('Folie med linstruktur', 3)],
               [('STR16/04/152', -0.15), ('STR23/04/152', -0.15), ('STR30/04/152', 0), ('STR38/04/152', 0.35)], [('Ja', 0.2), ('Nej', 0)],
-              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka fˆr visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
-              [[('CMYK-tryck 4/0', 12), ('CMYK-tryck 4/4', 13)], [('Gl‰ttad folie', 0), ('Matt folie', 0.20), ('Reps‰ker matt folie', 2), ('Folie med linstruktur', 3)],
+              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka f√∂r visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
+              [[('CMYK-tryck 4/0', 12), ('CMYK-tryck 4/4', 13)], [('Gl√§ttad folie', 0), ('Matt folie', 0.20), ('Reps√§ker matt folie', 2), ('Folie med linstruktur', 3)],
               [('STR16/04/152', -0.15), ('STR23/04/152', -0.15), ('STR30/04/152', 0), ('STR38/04/152', 0.35)], [('Ja', 0.2), ('Nej', 0)],
-              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka fˆr visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
-              [[('CMYK-tryck 4/0', 10.50), ('CMYK-tryck 4/4', 11.50)], [('Gl‰ttad folie', 0), ('Matt folie', 0.20), ('Reps‰ker matt folie', 2), ('Folie med linstruktur', 3)],
+              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka f√∂r visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
+              [[('CMYK-tryck 4/0', 10.50), ('CMYK-tryck 4/4', 11.50)], [('Gl√§ttad folie', 0), ('Matt folie', 0.20), ('Reps√§ker matt folie', 2), ('Folie med linstruktur', 3)],
               [('STR16/04/152', -0.15), ('STR23/04/152', -0.15), ('STR30/04/152', 0), ('STR38/04/152', 0.35)], [('Ja', 0.2), ('Nej', 0)],
-              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka fˆr visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
-              [[('CMYK-tryck 4/0', 9.50), ('CMYK-tryck 4/4', 10.50)], [('Gl‰ttad folie', 0), ('Matt folie', 0.20), ('Reps‰ker matt folie', 2), ('Folie med linstruktur', 3)],
+              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka f√∂r visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
+              [[('CMYK-tryck 4/0', 9.50), ('CMYK-tryck 4/4', 10.50)], [('Gl√§ttad folie', 0), ('Matt folie', 0.20), ('Reps√§ker matt folie', 2), ('Folie med linstruktur', 3)],
               [('STR16/04/152', -0.15), ('STR23/04/152', -0.15), ('STR30/04/152', 0), ('STR38/04/152', 0.35)], [('Ja', 0.2), ('Nej', 0)],
-              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka fˆr visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
-              [[('CMYK-tryck 4/0', 8.80), ('CMYK-tryck 4/4', 9.80)], [('Gl‰ttad folie', 0), ('Matt folie', 0.20), ('Reps‰ker matt folie', 2), ('Folie med linstruktur', 3)],
+              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka f√∂r visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
+              [[('CMYK-tryck 4/0', 8.80), ('CMYK-tryck 4/4', 9.80)], [('Gl√§ttad folie', 0), ('Matt folie', 0.20), ('Reps√§ker matt folie', 2), ('Folie med linstruktur', 3)],
               [('STR16/04/152', -0.15), ('STR23/04/152', -0.15), ('STR30/04/152', 0), ('STR38/04/152', 0.35)], [('Ja', 0.2), ('Nej', 0)],
-              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka fˆr visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
-              [[('CMYK-tryck 4/0', 8.60), ('CMYK-tryck 4/4', 9.60)], [('Gl‰ttad folie', 0), ('Matt folie', 0.20), ('Reps‰ker matt folie', 2), ('Folie med linstruktur', 3)],
+              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka f√∂r visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
+              [[('CMYK-tryck 4/0', 8.60), ('CMYK-tryck 4/4', 9.60)], [('Gl√§ttad folie', 0), ('Matt folie', 0.20), ('Reps√§ker matt folie', 2), ('Folie med linstruktur', 3)],
               [('STR16/04/152', -0.15), ('STR23/04/152', -0.15), ('STR30/04/152', 0), ('STR38/04/152', 0.35)], [('Ja', 0.2), ('Nej', 0)],
-              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka fˆr visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
-              [[('CMYK-tryck 4/0', 8.40), ('CMYK-tryck 4/4', 9.40)], [('Gl‰ttad folie', 0), ('Matt folie', 0.20), ('Reps‰ker matt folie', 2), ('Folie med linstruktur', 3)],
+              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka f√∂r visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
+              [[('CMYK-tryck 4/0', 8.40), ('CMYK-tryck 4/4', 9.40)], [('Gl√§ttad folie', 0), ('Matt folie', 0.20), ('Reps√§ker matt folie', 2), ('Folie med linstruktur', 3)],
               [('STR16/04/152', -0.15), ('STR23/04/152', -0.15), ('STR30/04/152', 0), ('STR38/04/152', 0.35)], [('Ja', 0.2), ('Nej', 0)],
-              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka fˆr visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
-              [[('CMYK-tryck 4/0', 8.20), ('CMYK-tryck 4/4', 9.20)], [('Gl‰ttad folie', 0), ('Matt folie', 0.20), ('Reps‰ker matt folie', 2), ('Folie med linstruktur', 3)],
+              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka f√∂r visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
+              [[('CMYK-tryck 4/0', 8.20), ('CMYK-tryck 4/4', 9.20)], [('Gl√§ttad folie', 0), ('Matt folie', 0.20), ('Reps√§ker matt folie', 2), ('Folie med linstruktur', 3)],
               [('STR16/04/152', -0.15), ('STR23/04/152', -0.15), ('STR30/04/152', 0), ('STR38/04/152', 0.35)], [('Ja', 0.2), ('Nej', 0)],
-              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka fˆr visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
-              [[('CMYK-tryck 4/0', 8), ('CMYK-tryck 4/4', 9)], [('Gl‰ttad folie', 0), ('Matt folie', 0.20), ('Reps‰ker matt folie', 2), ('Folie med linstruktur', 3)],
+              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka f√∂r visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]],
+              [[('CMYK-tryck 4/0', 8), ('CMYK-tryck 4/4', 9)], [('Gl√§ttad folie', 0), ('Matt folie', 0.20), ('Reps√§ker matt folie', 2), ('Folie med linstruktur', 3)],
               [('STR16/04/152', -0.15), ('STR23/04/152', -0.15), ('STR30/04/152', 0), ('STR38/04/152', 0.35)], [('Ja', 0.2), ('Nej', 0)],
-              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka fˆr visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]]]
+              [('Ja', 0.35), ('Nej', 0)], [('Icke', 0), ('Ficka f√∂r visitkort', 0.4), ('Trekantig ficka', 0.5), ('Ryggficka', 0.4)]]]
 
-converter = CurrencyConverter()
+converter = CurrencyConverter(True)
 
 for v in range(len(properties)):
     for lista in itertools.product(*properties[v]):
         x2, y2 = zip(*lista)
         z1, z2, z3, z4, z5, z6 = x2
-        line.append(('Reklamp‰rmar', z1, z2, z3, z4, z5, z6, quantity[v], quantity[v+1]-1, converter.convert(round(sum(j for i, j in lista), 2)), 0))
+        line.append(('Reklamp√§rmar', z1, z2, z3, z4, z5, z6, quantity[v], quantity[v+1]-1, converter.convert(round(sum(j for i, j in lista), 2)), 0))
 
 line = sorted(line, key=itemgetter(1, 2, 3, 4, 5, 6, 7))
 for i in range(len(line)):
